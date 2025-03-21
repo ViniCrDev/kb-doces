@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrossel de Projetos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin-top: 10px;
+
+        }
+
+        body {
+            background-color: #0d0d0d;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 900px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            background: #1a1a1a;
+            border-radius: 10px;
+        }
+
+        .slide img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            color: white;
+            font-size: 18px;
+            border-radius: 50%;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            color: black;
+            background: linear-gradient(90deg, #c3ff3a, #76ff03);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            opacity: 0.8;
+        }
+
+        .outline-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #fff;
+            background: transparent;
+            border: 1px solid #fff;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .outline-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    
+    <button class="outline-button">Resultados comprovados</button>
+    <h2>Já ajudamos empresas a aumentar <br><span style="color: #aaff00;">em até 300% na conversão!</span></h2>
+    <div class="carousel-container">
+        <button class="nav-button prev" onclick="moveSlide(-1)">&#10094;</button>
+        <div class="carousel">
+            <div class="slide">
+                <h3>Cakto Audiovisual</h3>
+                <img src="images.jpeg" alt="Cakto Audiovisual">
+                <br>
+                <button>abrir</button>
+            </div>
+            <div class="slide">
+                <h3>Mundial Soluções</h3>
+                <img src="images.jpeg" alt="Mundial Soluções">
+            </div>
+            <div class="slide">
+                <h3>Agência Seek</h3>
+                <img src="images.jpeg" alt="Agência Seek">
+            </div>
+        </div>
+        <button class="nav-button next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+    <button class="cta-button">SOLICITAR ORÇAMENTO</button>
+    <br><br>
+
+    <script>
+        let index = 0;
+        function moveSlide(direction) {
+            const slides = document.querySelectorAll(".slide");
+            const totalSlides = slides.length;
+            index = (index + direction + totalSlides) % totalSlides;
+            document.querySelector(".carousel").style.transform = `translateX(-${index * 100}%)`;
+        }
+    </script>
+</body>
+
+</html>
